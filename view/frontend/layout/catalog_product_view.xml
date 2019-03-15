@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <body>
+      <referenceBlock name="product.info.details">
+          <block class="Gamma\Vendor\Block\Index\Detail" name="example.tab" template="Gamma_Vendor::product_detail.phtml" group="detailed_info">
+              <arguments>
+                  <argument translate="true" name="title" xsi:type="string">Vendors</argument>
+              </arguments>
+          </block>
+      </referenceBlock>
+   </body>
+</page>
+
+<!-- ?xml version="1.0"?>
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <container name="product.info.media" htmlTag="div" htmlClass="product media" after="product.info.main">
+                <block class="Gamma\Vendor\Block\Index\Detail" name="example.tab.vendor"
+                       template="Gamma_Vendor::product_detail.phtml">
+                </block>
+            </container>
+        </referenceContainer>
+    </body-->

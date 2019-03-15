@@ -1,0 +1,10 @@
+<?php $vendors = $block->getVendorsList();?>
+
+<?php //var_dump($vendors);?>
+
+<?php foreach($vendors as $vendor_):?>
+
+<div>
+<a href="<?php echo $block->getUrl('vendor/index/vendor/id/'.$vendor_->getVendorId()); ?>"><?php echo $vendor_->getName();?></a>
+</div>
+<?php endforeach;?>
