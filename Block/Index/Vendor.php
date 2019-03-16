@@ -44,6 +44,9 @@ class Vendor extends \Magento\Framework\View\Element\Template {
         
         $data = $this->_vendorRepositoryInterface->load($idVendor);
         
+        
+        $logger->info("getVendor block data: ".print_r($data->getData(),true));
+        
         return $data;
     }
     

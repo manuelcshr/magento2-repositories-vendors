@@ -35,7 +35,7 @@ class Index extends \Magento\Framework\View\Element\Template {
         $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
         $logger = new \Zend\Log\Logger();
         $logger->addWriter($writer);
-        $logger->info("info");
+        $logger->info("getVendorsList block index");
         
         
         //return $this->_factoryGamma->addFieldToSelect("*");

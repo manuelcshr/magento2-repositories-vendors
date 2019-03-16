@@ -58,7 +58,7 @@ class VendorRepository implements VendorRepositoryInterface
     
     public function load($id){
         $vendor = $this->vendorFactory->create();
-        $vendor->load($vendor, $id);
+        $vendor->getResource()->load($vendor, $id);
         if (! $vendor->getId()) {
             throw new NoSuchEntityException(__('Unable to find vendor with ID "%1"', $id));
         }
