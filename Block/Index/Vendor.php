@@ -6,7 +6,7 @@ class Vendor extends \Magento\Framework\View\Element\Template {
 
     
     protected $_gammavendorFactory;
-    
+    protected $_productRepository;
     
     
     public function __construct(
@@ -14,11 +14,14 @@ class Vendor extends \Magento\Framework\View\Element\Template {
         \Gamma\Vendor\Model\GammavendorFactory $gammavendorFactory ,
         \Gamma\Vendor\Api\VendorRepositoryInterface $vendorRepositoryInterface,
         \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
+        \Magento\Catalog\Model\ProductRepository $productRepository,
         array $data = []) {
 
         $this->_gammavendorFactory = $gammavendorFactory;
         $this->_vendorRepositoryInterface = $vendorRepositoryInterface;
         $this->_searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->_productRepository = $productRepository;
+        
         parent::__construct($context, $data);
 
     }
@@ -59,9 +62,23 @@ class Vendor extends \Magento\Framework\View\Element\Template {
         $logger->info("getAssociatedProductcIds block");
         
         
-        $data = $this->_vendorRepositoryInterface->getAssociatedProductcIds($idVendor);
+        $dataProducts = $this->_vendorRepositoryInterface->getAssociatedProductcIds($idVendor);
+        $dataListProducs = array();
+        foreach($dataProducts as $product_){
+            $dataListProducs[] = $this->getProductById($product_["entity_id"]);
+        }
         
-        return $data;
+        return $dataListProducs;
+    }
+    
+    private function getProductById($id)
+    {
+        return $this->_productRepository->getById($id);
+    }
+    
+    private function getProductBySku($sku)
+    {
+        return $this->_productRepository->get($sku);
     }
     
     

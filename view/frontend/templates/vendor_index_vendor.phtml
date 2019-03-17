@@ -10,7 +10,8 @@
 <?php $products = $block->getAssociatedProductcIds($block->getVendorId());?>
 <?php foreach($products as $product_):?>
 <div>
-	<?php echo $product_["sku"];?>
+	<?php $url = $product_->getUrlModel()->getUrl($product_); ?>
+	<a href="<?php echo $url;?>"><?php echo $product_->getSku();?></a>
 </div>
 <br/>
 <?php endforeach;?>
